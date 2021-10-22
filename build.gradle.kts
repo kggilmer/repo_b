@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.plugin.statistics.ReportStatisticsToElasticSearch.url
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.net.URL
 
@@ -31,17 +32,20 @@ tasks.withType<KotlinCompile>() {
 
 tasks.dokkaGfm.configure {
     outputDirectory.set(projectDir.resolve("docs/gfm"))
+    dokkaSourceSets.configureEach {
+        externalDocumentationLink {
+            packageListUrl.set(URL("https://raw.githubusercontent.com/kggilmer/repo_a/main/docs/gfm/repo_a/package-list"))
+            url.set(URL("https://kggilmer.github.io/repo_a/gfm/"))
+        }
+    }
 }
 
 tasks.dokkaHtml.configure {
     outputDirectory.set(projectDir.resolve("docs/html"))
-}
-
-tasks.withType<org.jetbrains.dokka.gradle.DokkaTask>().configureEach {
     dokkaSourceSets.configureEach {
         externalDocumentationLink {
-            packageListUrl.set(URL("https://raw.githubusercontent.com/kggilmer/repo_a/master/repo_a/package-list"))
-            url.set(URL("https://kggilmer.github.io/repo_a/"))
+            packageListUrl.set(URL("https://raw.githubusercontent.com/kggilmer/repo_a/main/docs/html/repo_a/package-list"))
+            url.set(URL("https://kggilmer.github.io/repo_a/html/"))
         }
     }
 }
