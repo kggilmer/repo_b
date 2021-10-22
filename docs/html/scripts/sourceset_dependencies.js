@@ -1,1 +1,1 @@
-sourceset_dependencies='{":dokkaHtml/main":[]}'
+sourceset_dependencies = '{":cli:dokkaHtmlPartial/main":[],":shrubs:dokkaHtmlPartial/main":[]}'

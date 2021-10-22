@@ -1,9 +1,8 @@
-//[repo_b](index.md)
+/
 
-# repo_b
-
-## Packages
+## All modules:
 
 | Name |
 |---|
-| [[root]](repo_b/[root]/index.md) |
+| [cli](cli/index.md) |  |
+| [shrubs](shrubs/index.md) |  |

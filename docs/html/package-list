@@ -1,0 +1,8 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:////PointingToDeclaration/shrubs/[root]/index.html
+$dokka.location://main/#/PointingToDeclaration/cli/[root]/main.html
+$dokka.location:/ShrubGenerator///PointingToDeclaration/shrubs/[root]/-shrub-generator/index.html
+$dokka.location:/ShrubGenerator/ShrubGenerator/#/PointingToDeclaration/shrubs/[root]/-shrub-generator/-shrub-generator.html
+$dokka.location:/ShrubGenerator/generate/#kotlin.String/PointingToDeclaration/shrubs/[root]/-shrub-generator/generate.html
+

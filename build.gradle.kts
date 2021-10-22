@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.statistics.ReportStatisticsToElasticSearch.url
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.net.URL
 
 plugins {
@@ -10,30 +8,42 @@ plugins {
 group = "me.kggilmer"
 version = "1.0-SNAPSHOT"
 
-repositories {
-    mavenCentral()
-    mavenLocal()
+allprojects {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
 }
 
-dependencies {
-    implementation(kotlin("stdlib"))
-    implementation("me.kggilmer:repo_a:1.0-SNAPSHOT")
-    testImplementation(kotlin("test"))
+subprojects {
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>() {
+        kotlinOptions.jvmTarget = "1.8"
+    }
 }
 
-tasks.test {
-    useJUnit()
+tasks.getByName<Delete>("clean") {
+    delete.add(projectDir.resolve("docs/gfm"))
+    delete.add(projectDir.resolve("docs/html"))
 }
 
-tasks.withType<KotlinCompile>() {
-    kotlinOptions.jvmTarget = "1.8"
+tasks.dokkaGfmMultiModule.configure {
+    outputDirectory.set(projectDir.resolve("docs/gfm"))
+}
+
+tasks.dokkaHtmlMultiModule.configure {
+    outputDirectory.set(projectDir.resolve("docs/html"))
+}
+
+tasks.register("gen-docs") {
+    dependsOn("dokkaGfmMultiModule")
+    dependsOn("dokkaHtmlMultiModule")
 }
 
 tasks.dokkaGfm.configure {
     outputDirectory.set(projectDir.resolve("docs/gfm"))
     dokkaSourceSets.configureEach {
         externalDocumentationLink {
-            packageListUrl.set(URL("https://raw.githubusercontent.com/kggilmer/repo_a/main/docs/gfm/repo_a/package-list"))
+            packageListUrl.set(URL("https://raw.githubusercontent.com/kggilmer/repo_a/main/docs/gfm/package-list"))
             url.set(URL("https://kggilmer.github.io/repo_a/gfm/"))
         }
     }
@@ -43,18 +53,8 @@ tasks.dokkaHtml.configure {
     outputDirectory.set(projectDir.resolve("docs/html"))
     dokkaSourceSets.configureEach {
         externalDocumentationLink {
-            packageListUrl.set(URL("https://raw.githubusercontent.com/kggilmer/repo_a/main/docs/html/repo_a/package-list"))
+            packageListUrl.set(URL("https://raw.githubusercontent.com/kggilmer/repo_a/main/docs/html/package-list"))
             url.set(URL("https://kggilmer.github.io/repo_a/html/"))
         }
     }
-}
-
-tasks.register("gen-docs") {
-    dependsOn("dokkaGfm")
-    dependsOn("dokkaHtml")
-}
-
-tasks.getByName<Delete>("clean") {
-    delete.add(projectDir.resolve("docs/gfm"))
-    delete.add(projectDir.resolve("docs/html"))
 }
