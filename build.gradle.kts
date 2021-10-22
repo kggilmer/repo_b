@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.plugin.statistics.ReportStatisticsToElasticSearch.url
 import java.net.URL
 
 plugins {
@@ -39,7 +40,17 @@ tasks.register("gen-docs") {
     dependsOn("dokkaHtmlMultiModule")
 }
 
-tasks.dokkaGfm.configure {
+tasks.withType<org.jetbrains.dokka.gradle.DokkaTaskPartial>().configureEach {
+    dokkaSourceSets.configureEach {
+        externalDocumentationLink {
+            packageListUrl.set(URL("https://raw.githubusercontent.com/kggilmer/repo_a/main/docs/html/package-list"))
+            url.set(URL("https://kggilmer.github.io/repo_a/html/"))
+        }
+    }
+}
+
+/*
+tasks.dokkaGfmMultiModule.configure {
     outputDirectory.set(projectDir.resolve("docs/gfm"))
     dokkaSourceSets.configureEach {
         externalDocumentationLink {
@@ -48,13 +59,4 @@ tasks.dokkaGfm.configure {
         }
     }
 }
-
-tasks.dokkaHtml.configure {
-    outputDirectory.set(projectDir.resolve("docs/html"))
-    dokkaSourceSets.configureEach {
-        externalDocumentationLink {
-            packageListUrl.set(URL("https://raw.githubusercontent.com/kggilmer/repo_a/main/docs/html/package-list"))
-            url.set(URL("https://kggilmer.github.io/repo_a/html/"))
-        }
-    }
-}
+*/
