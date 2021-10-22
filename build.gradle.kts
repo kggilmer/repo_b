@@ -30,7 +30,11 @@ tasks.withType<KotlinCompile>() {
 }
 
 tasks.dokkaGfm.configure {
-    outputDirectory.set(projectDir.resolve("docs"))
+    outputDirectory.set(projectDir.resolve("docs/gfm"))
+}
+
+tasks.dokkaHtml.configure {
+    outputDirectory.set(projectDir.resolve("docs/html"))
 }
 
 tasks.withType<org.jetbrains.dokka.gradle.DokkaTask>().configureEach {
