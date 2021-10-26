@@ -42,7 +42,6 @@ subprojects {
                 println("Unconfigured task name $name")
             }
         }
-
     }
 }
 
