@@ -5,4 +5,5 @@ $dokka.location://main/#/PointingToDeclaration/cli/cli/[root]/main.md
 $dokka.location:/ShrubGenerator///PointingToDeclaration/shrubs/shrubs/[root]/-shrub-generator/index.md
 $dokka.location:/ShrubGenerator/ShrubGenerator/#/PointingToDeclaration/shrubs/shrubs/[root]/-shrub-generator/-shrub-generator.md
 $dokka.location:/ShrubGenerator/generate/#kotlin.String/PointingToDeclaration/shrubs/shrubs/[root]/-shrub-generator/generate.md
+$dokka.location:/ShrubGenerator/generateThings/#/PointingToDeclaration/shrubs/shrubs/[root]/-shrub-generator/generate-things.md
 

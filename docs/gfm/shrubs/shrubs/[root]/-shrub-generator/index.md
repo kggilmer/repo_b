@@ -10,3 +10,4 @@ class [ShrubGenerator](index.md) : [ThingGenerator](https://kggilmer.github.io/r
 | Name | Summary |
 |---|---|
 | [generate](generate.md) | [jvm]<br>open override fun [generate](generate.md)(input: [String](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)): [Thing](https://kggilmer.github.io/repo_a/gfm/api/api/[root]/-thing/index.md)? |
+| [generateThings](generate-things.md) | [jvm]<br>open override fun [generateThings](generate-things.md)(): SomeThings |
