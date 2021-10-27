@@ -7,6 +7,7 @@ plugins {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation("me.kggilmer:thing-api:1.1")
-    implementation("me.kggilmer:thing-impl:1.1")
+    implementation("me.kggilmer:thing-api:1.2")
+    implementation("me.kggilmer:thing-trees:1.2")
+    implementation("me.kggilmer:thing-impl:1.2")
 }
